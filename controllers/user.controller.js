@@ -20,6 +20,17 @@ const addUser = async (req, res) => {
   }
 };
 
+const getuserDetail = async (req, res) => {
+  const userdetails = await Usermodel.findOne({
+    where: { email: req.params.email },
+  });
+  if (userdetails) {
+    res.status(200).send({ details: userdetails });
+  } else {
+    res.status(403).send({ msg: "No user find with Provided email address" });
+  }
+};
+
 const getAlluser = async (req, res) => {
   const allUser = await Usermodel.findAll();
   res.status(200).send({ details: allUser });
@@ -58,4 +69,11 @@ const deleteallData = async (req, res) => {
   res.status(200).send({ msg: "All data deleted" });
 };
 
-module.exports = { addUser, getAlluser, updateUser, deleteUser, deleteallData };
+module.exports = {
+  addUser,
+  getuserDetail,
+  getAlluser,
+  updateUser,
+  deleteUser,
+  deleteallData,
+};

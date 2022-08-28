@@ -12,6 +12,7 @@ app.get("/", (req, res) => {
 });
 
 app.post("/add", userCtrl.addUser);
+app.get("/getuserdetail/:email", userCtrl.getuserDetail);
 app.get("/getAlluser", userCtrl.getAlluser);
 app.patch("/updateUser", userCtrl.updateUser);
 app.delete("/userDelete", userCtrl.deleteUser);
